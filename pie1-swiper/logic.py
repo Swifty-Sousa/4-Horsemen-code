@@ -2,7 +2,7 @@
 from tkinter import *
 
 
-def logic():
+def card():
     numid= input("Buff One card or student ID 1/0.\n")
     if(numid):
         buffone_raw= input("please swipe your BuffOne card.\n")
@@ -19,12 +19,14 @@ def logic():
         #print(card_sid + '\n')
         #print(card_name+ '\n')
         # send off to server or something
-    else:
-        first = input("Enter your first name")
-        first= first[0].upper()+ first[1:].lower()
-        last= input("Enter your last name")
-        last= last[0].upper()+ last[1:].lower()
-        sid= input("Enter your student ID")
+        
+
+def somethingorother():    
+    first = input("Enter your first name")
+    first= first[0].upper()+ first[1:].lower()
+    last= input("Enter your last name")
+    last= last[0].upper()+ last[1:].lower()
+    sid= input("Enter your student ID")
 
 
 
@@ -32,11 +34,3 @@ def logic():
 
 
 
-def main():
-    logic()
-
-
-
-
-if __name__== "__main__":
-    main()
