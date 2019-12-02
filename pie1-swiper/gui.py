@@ -14,12 +14,11 @@ class Applicaiton(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
         self.frames={}
-        for i in (EventLogin, selector, CardLogin, ManualLogin, NewLogin):
+        for i in (EventLogin, Selector, CardLogin, ManualLogin, NewLogin):
             page_name= i.__name__
             frame = i(parent=container, controller=self)
             self.frames[page_name]= frame
             frame.grid(row=0, column=0, sticky="nsew")
-
         self.show_frame("EventLogin")
 
     #brings frame to the front of app to be interacted with
@@ -43,29 +42,21 @@ class EventLogin(tk.Frame):
         self.controller= controller
         #def create(self):
         #lables and titles and the such
-        self.label= tk.Label(self, text= "Please Enter Event ID to active Swiper", font=controller.title_font)
+        self.label= tk.Label(self, text= "Please Enter Event ID to activate Swiper", font=controller.title_font)
         self.label.pack(side="top", fill="x", pady=10)
-        #Entery Code:
-        self.EventId= tk.Entry() 
+        #input Code:
+        eventid= tk.StringVar()
+        self.EventId= tk.Entry(self, textvariable= eventid) 
         self.EventId.pack()
         #buttons to go next:
-        self.b1= tk.Button(self, text="Next", command= lambda: [self.hide(), controller.show_frame("selector")])
+        self.b1= tk.Button(self, text="Next", command= lambda: [controller.show_frame("Selector"), eventid.set(self.EventId.get()), Ver_Event(eventid.get()), self.EventId.delete(0,END)])
         self.b1.pack()
         
-    def load(self):
-        print("does this happen by default")
-        self.b1.pack()
-        self.EventId.pack()
-        self.label.pack(side="top", fill="x", pady=10)
-
-    def hide(self):
-        self.b1.pack_forget()
-        self.EventId.pack_forget()
-        self.label.pack_forget()
+        
            
 
 
-class selector(tk.Frame):
+class Selector(tk.Frame):
     def __init__(self,parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller= controller
@@ -76,7 +67,7 @@ class selector(tk.Frame):
         card= tk.Button(self, text="Sign in with BuffOne card", command= lambda: controller.show_frame("CardLogin"))
         man= tk.Button(self, text="Sign in with Student ID number", command= lambda: controller.show_frame("ManualLogin"))
         new= tk.Button(self, text="Don't have an account", command= lambda: controller.show_frame("NewLogin"))
-        back= tk.Button(self, text="Back", command= lambda: [event.load(), controller.show_frame("EventLogin")])
+        back= tk.Button(self, text="Back", command= lambda: [controller.show_frame("EventLogin")])
         card.pack()
         man.pack()
         new.pack()
@@ -87,6 +78,8 @@ class CardLogin(tk.Frame):
     def __init__(self,parent, controller):
         tk.Frame.__init__(self,parent)
         self.controller= controller
+        #button to go back to selector:
+        menu= tk.Button(self, text="Menu", command= controller.show_frame("Selector"))
 
 class ManualLogin(tk.Frame):
     def __init__(self,parent, controller):
@@ -102,7 +95,7 @@ class NewLogin(tk.Frame):
 
 if __name__=="__main__":
     app=Applicaiton()
-    event= Applicaiton().frames["EventLogin"]
+    #event= Applicaiton().frames["EventLogin"]
 
     app.mainloop()
 

@@ -19,7 +19,9 @@ def card():
         #print(card_sid + '\n')
         #print(card_name+ '\n')
         # send off to server or something
-        
+def Ver_Event(eventid):
+    print(eventid)
+    #actually verify the garbage
 
 def somethingorother():    
     first = input("Enter your first name")
