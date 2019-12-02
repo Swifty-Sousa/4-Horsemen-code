@@ -1,0 +1,28 @@
+gui layout:
+
+on Start:
+- promt user to enter event code,
+    - touch website and get event 
+- gain user confirmation. // maybe ask for creds
+- redirect to logging.
+
+Loggin in:
+- with buffone // no creds
+    - take in swipe
+    - parse swipe
+    - display swipe data
+    - send to cite
+    - have cite varify user
+    - send attendance email// maybe 
+    - set so next card can  be swiped or go to another window
+- manually //uses creds 
+    - enter as much of possible data as follows:
+        - first last name 
+        - student id 
+        - student card number
+        - username 
+    - send to server for auth
+    - return approval.
+    - send attendance email
+- new user:
+    - send email to page for signup.
