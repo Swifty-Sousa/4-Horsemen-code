@@ -126,10 +126,10 @@ class CardSubmit(tk.Frame):
         var = tk.StringVar()
         var2= tk.StringVar()
         var3= tk.StringVar()
-        l= tk.Label(self, textvariable=var)
+        self.l= tk.Label(self, textvariable=var)
         l2= tk.Label(self, textvariable=var2)
         l3= tk.Label(self, textvariable=var3)
-        l.pack()
+        self.l.pack()
         l2.pack()
         l3.pack()
         var.set("Student Name:"+ holder[0] + " "+ holder[1]+ '\n')
@@ -137,6 +137,10 @@ class CardSubmit(tk.Frame):
         var3.set("Card number: "+ student.scnum + '\n')
 
 
+def pront(a,b,c):
+    print(a)
+    print(b)
+    print(c)
 
 class ManualLogin(tk.Frame):
     def __init__(self,parent, controller):
@@ -152,9 +156,8 @@ class ManualLogin(tk.Frame):
         input_id= tk.StringVar()
         input_fname= tk.StringVar()
         input_lname= tk.StringVar()
-        input_ID= tk.StringVar()
         #Entries:
-        in_id= tk.Entry(self, textvariable=input_ID)
+        in_id= tk.Entry(self, textvariable=input_id)
         in_fname= tk.Entry(self, textvariable=input_fname)
         in_lname= tk.Entry(self, textvariable=input_lname)
         #packing:
@@ -164,9 +167,9 @@ class ManualLogin(tk.Frame):
         in_lname.pack()
         label_id.pack()
         in_id.pack()
-        print(input_fname.get())
-        print(input_lname.get())
-        print(input_ID.get())
+        submit= tk.Button(self, text="Submit", command= lambda:pront(input_fname.get(),input_lname.get(), input_id.get()))
+        submit.pack()
+        
 
 
         menu.pack()
@@ -186,5 +189,7 @@ class NewLogin(tk.Frame):
 if __name__=="__main__":
     #event= Applicaiton().frames["EventLogin"]
     app=Applicaiton()
+    app.frames["CardSubmit"].l['text']="puta"
+    app.frames["CardSubmit"].l.pack()
     app.mainloop()
 
