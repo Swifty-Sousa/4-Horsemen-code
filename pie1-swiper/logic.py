@@ -2,7 +2,7 @@
 
 
 def parse_card(buffone_raw):
-    print("reached parse card")
+    #print("reached parse card")
     buffone_holder= buffone_raw.split('=')
     buffone_holder[0]= buffone_holder[0][2:]
     card_name= buffone_holder[0]
@@ -11,7 +11,7 @@ def parse_card(buffone_raw):
     card_first= holder[0][0]+ holder[0][1:].lower()
     card_last= holder[1][0]+ holder[1][1:].lower()
     reply= [card_first, card_last, card_sid, card_name]
-    print("sending reply")
+    #print("sending reply")
     return reply
 
 def Ver_Event(eventid):
