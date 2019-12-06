@@ -1,6 +1,5 @@
   $(document).ready(function(){
     $('#loginButton').on('click', function(){
-        console.log("adnadnsa fhsaflhsbfalshbfsahd");
         var userEmail = $('#userEmail').val();
         var userPassword = $('#userPassword').val();
 
