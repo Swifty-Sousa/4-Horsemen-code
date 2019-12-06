@@ -141,8 +141,6 @@ class CardLogin(tk.Frame):
         parts_list= self.winfo_children()
         for item in parts_list:
             item.pack_forget()
-    def Submit(self):
-        print("thoust is gay")
 
 
 class CardSubmit(tk.Frame):
