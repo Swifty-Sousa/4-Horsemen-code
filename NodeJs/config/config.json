@@ -1,0 +1,11 @@
+
+{
+      "username": "zacextyuzievdp",
+      "password": "3277479ee6953003135e47c2877d3535867196a6c7a4692da3b4604cf71b0361",
+      "database": "der1qqcar9k6mv",
+      "host": "ec2-54-83-55-122.compute-1.amazonaws.com",
+      "dialect": "postgres",
+      "port": "5432",
+      "SSL":true,
+      "native":true
+}
