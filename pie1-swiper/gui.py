@@ -115,7 +115,7 @@ class CardLogin(tk.Frame):
         #button to go back to selector:
         self.menu.pack()
     def takedata(self):
-        self.button= tk.Button(self, text="Submit", command= lambda: [self.Submit(), self.toggle(), self.mains()])
+        self.button= tk.Button(self, text="Submit", command= lambda: [self.toggle(), self.mains()])
         self.menu.pack()
         var = tk.StringVar(self)
         var2= tk.StringVar(self)
