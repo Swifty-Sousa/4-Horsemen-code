@@ -1,7 +1,7 @@
 var express = require("express"),
     router = express.Router();
 
-    // Login route - default page
+    // profile route
     router.get("/", function(req, res) {
         res.render("Profile", {
             title: "Profile",

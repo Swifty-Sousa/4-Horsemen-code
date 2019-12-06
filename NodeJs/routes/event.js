@@ -1,7 +1,7 @@
 var express = require("express"),
     router = express.Router();
 
-    // Login route - default page
+    // event route - default page
     router.get("/", function(req, res) {
         res.render("Event", {
             title: "Event",

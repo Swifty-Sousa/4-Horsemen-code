@@ -22,6 +22,7 @@ const profile=require("./routes/profile");
 const events=require("./routes/event");
 
 app.use("/login", routes);
+app.use("/", routes);
 app.use("/homepage", homepage);
 app.use("/profile", profile);
 app.use("/event", events);
