@@ -115,7 +115,7 @@ class CardLogin(tk.Frame):
         #button to go back to selector:
         self.menu.pack()
     def takedata(self):
-        self.button= tk.Button(self, text="Submit", command= lambda: [self.Submit()])
+        self.button= tk.Button(self, text="Submit", command= lambda: [self.Submit(), self.toggle(), self.mains()])
         self.menu.pack()
         var = tk.StringVar(self)
         var2= tk.StringVar(self)
@@ -138,14 +138,9 @@ class CardLogin(tk.Frame):
         self.button.pack()
         self.menu.pack()
     def toggle(self):
-        self.menu.pack_forget()
-        self.label.pack_forget()
-        self.b1.pack_forget()
-        self.Data.pack_forget()
-        self.l.pack_forget()
-        self.l2.pack_forget()
-        self.l3.pack_forget()
-        self.button.pack_forget()
+        parts_list= self.winfo_children()
+        for item in parts_list:
+            item.pack_forget()
     def Submit(self):
         print("thoust is gay")
 
@@ -202,11 +197,8 @@ class ManualLogin(tk.Frame):
         in_lname.pack()
         label_id.pack()
         in_id.pack()
-        submit= tk.Button(self, text="Submit", command= lambda:pront(input_fname.get(),input_lname.get(), input_id.get()))
+        submit= tk.Button(self, text="Submit", command= lambda:[pront(input_fname.get(),input_lname.get(), input_id.get()),in_lname.delete(0,'end'),in_fname.delete(0,'end'),in_id.delete(0,'end'), self.controller.show_frame("Selector")])
         submit.pack()
-        
-
-
         menu.pack()
 
 class NewLogin(tk.Frame):
@@ -214,7 +206,7 @@ class NewLogin(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller= controller
         #Das lable:
-        label =tk.Label(self, text="Please Visit our website at: WEBSITE URL HERE DONT FORGET THIS U FUCK to create an account", font=controller.title_font )
+        label =tk.Label(self, text="Please Visit our website at: ", font=controller.title_font )
         label.pack()
         #button to go back to selector:
         menu= tk.Button(self, text="Menu", command= lambda: controller.show_frame("Selector"))
@@ -224,6 +216,4 @@ class NewLogin(tk.Frame):
 if __name__=="__main__":
     #event= Applicaiton().frames["EventLogin"]
     app=Applicaiton()
-    app.frames["CardSubmit"].l['text']="puta"
-    app.frames["CardSubmit"].l.pack()
     app.mainloop()

@@ -4,10 +4,6 @@ from tkinter import font as tkfont
 from logic import *
 
 holder=["", "", "", ""]
-def read(data=[]):
-    global holder
-    holder=data
-    print(holder)
 class stu():
     sfname=""
     slname=""
@@ -21,7 +17,7 @@ def clear_student(data=[], *args):
     student.sfname=""
     student.slname=""
     student.sid=""
-    student.csnum=""
+    student.scnum=""
 
 def create_student(data=[], *args):
     print("data recived:")
@@ -30,9 +26,7 @@ def create_student(data=[], *args):
     student.sfname=data[0]
     student.slname=data[1]
     student.sid= data[2]
-    student.csnum=data[3]
-    print("class bs:")
-    print(student.sfname)
+    student.scnum=data[3]
 
 
 class Applicaiton(tk.Tk):
@@ -69,7 +63,7 @@ class EventLogin(tk.Frame):
         label= tk.Label(self, text= "Please Enter Event ID to activate Swiper", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         #input Code:
-        eventid= tk.StringVar()
+        eventid= tk.StringVar(self)
         EventId= tk.Entry(self, textvariable= eventid) 
         EventId.pack()
         #buttons to go next:
@@ -96,24 +90,60 @@ class Selector(tk.Frame):
         back.pack()
 
 
+
 class CardLogin(tk.Frame):
     def __init__(self,parent, controller):
         tk.Frame.__init__(self,parent)
         self.controller= controller
-        #Labels:
-        lable= tk.Label(self, text="Please Swipe Card", font=controller.title_font)
-        lable.pack(side="top", fill="x", pady=10)
-        #Entry for card to be swiped:
+        self.mains()
+    def mains(self):
+        self.menu= tk.Button(self, text="Menu", command= lambda: [self.mains(), self.controller.show_frame("Selector")])
+        self.label= tk.Label(self, text="Please Swipe Card", font=self.controller.title_font)
         data= tk.StringVar()
-        Data= tk.Entry(self, textvariable=data) 
-        Data.pack()
-        b1= tk.Button(self, text="Submit", command= lambda: [print("step1"),data.set(Data.get()),create_student(parse_card(data.get())), Data.delete(0,'end'), controller.show_frame("CardSubmit")])
-        b1.pack()
-        
-
+        self.Data= tk.Entry(self, textvariable=data) 
+        self.b1= tk.Button(self, text="Submit", command= lambda: [data.set(self.Data.get()),create_student(parse_card(data.get())), self.Data.delete(0,'end'), self.takedata()])
+        self.l= tk.Label(self)
+        self.l2= tk.Label(self)
+        self.l3= tk.Label(self)
+        self.button=tk.Button(self)
+        self.toggle()
+        #Labels:
+        self.label.pack(side="top", fill="x", pady=10)
+        #Entry for card to be swiped:
+        self.Data.pack()
+        self.b1.pack()
         #button to go back to selector:
-        menu= tk.Button(self, text="Menu", command= lambda: controller.show_frame("Selector"))
-        menu.pack()
+        self.menu.pack()
+    def takedata(self):
+        self.button= tk.Button(self, text="Submit", command= lambda: [self.Submit(), self.toggle(), self.mains()])
+        self.menu.pack()
+        var = tk.StringVar(self)
+        var2= tk.StringVar(self)
+        var3= tk.StringVar(self)
+        self.l= tk.Label(self, textvariable=var)
+        self.l2= tk.Label(self, textvariable=var2)
+        self.l3= tk.Label(self, textvariable=var3)
+        self.toggle()
+        global student
+        global holder
+        print("this is in card submit")
+        print(student.sfname)
+        print(holder[3])
+        self.l.pack()
+        self.l2.pack()
+        self.l3.pack()
+        var.set("Student Name:"+ student.sfname + " " + student.slname+ '\n')
+        var2.set("Student_ID: " + student.sid + '\n')
+        var3.set("Card number: "+ student.scnum + '\n')
+        self.button.pack()
+        self.menu.pack()
+    def toggle(self):
+        parts_list= self.winfo_children()
+        for item in parts_list:
+            item.pack_forget()
+    def Submit(self):
+        print("thoust is gay")
+
 
 class CardSubmit(tk.Frame):
     def __init__(self, parent, controller):
@@ -121,11 +151,9 @@ class CardSubmit(tk.Frame):
         self.controller= controller
         global student
         global holder
-        print("this is in card submit")
-        print(student.sfname)
-        var = tk.StringVar()
-        var2= tk.StringVar()
-        var3= tk.StringVar()
+        var = tk.StringVar(self)
+        var2= tk.StringVar(self)
+        var3= tk.StringVar(self)
         self.l= tk.Label(self, textvariable=var)
         l2= tk.Label(self, textvariable=var2)
         l3= tk.Label(self, textvariable=var3)
@@ -136,6 +164,8 @@ class CardSubmit(tk.Frame):
         var2.set("Student_ID: " + student.sid + '\n')
         var3.set("Card number: "+ student.scnum + '\n')
 
+'''put a holder updater in the submit of cardlogin, have it go update the holder array, then call an updater for cardsubmit
+'''
 
 def pront(a,b,c):
     print(a)
@@ -167,11 +197,8 @@ class ManualLogin(tk.Frame):
         in_lname.pack()
         label_id.pack()
         in_id.pack()
-        submit= tk.Button(self, text="Submit", command= lambda:pront(input_fname.get(),input_lname.get(), input_id.get()))
+        submit= tk.Button(self, text="Submit", command= lambda:[pront(input_fname.get(),input_lname.get(), input_id.get()),in_lname.delete(0,'end'),in_fname.delete(0,'end'),in_id.delete(0,'end'), self.controller.show_frame("Selector")])
         submit.pack()
-        
-
-
         menu.pack()
 
 class NewLogin(tk.Frame):
@@ -179,7 +206,7 @@ class NewLogin(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller= controller
         #Das lable:
-        label =tk.Label(self, text="Please Visit our website at: WEBSITE URL HERE DONT FORGET THIS U FUCK to create an account", font=controller.title_font )
+        label =tk.Label(self, text="Please Visit our website at: ", font=controller.title_font )
         label.pack()
         #button to go back to selector:
         menu= tk.Button(self, text="Menu", command= lambda: controller.show_frame("Selector"))
@@ -189,7 +216,4 @@ class NewLogin(tk.Frame):
 if __name__=="__main__":
     #event= Applicaiton().frames["EventLogin"]
     app=Applicaiton()
-    app.frames["CardSubmit"].l['text']="puta"
-    app.frames["CardSubmit"].l.pack()
     app.mainloop()
-
