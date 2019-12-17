@@ -2,14 +2,16 @@ This project was created in order to aid the event programs specifically through
 The current system used to log student information is inefficient and impractical. 
 Through this upgraded system, students are more easily tracked when they attend events.
 Additionally, students have access to their event history and are suggested future events based on recommendations created by the system.
-
-  NodeJS folder is the meat of this program. It contains the views(HTML files for the pages.) Along with
+  HTML:
+    This is actually contained in the NodeJS folder. It was uplaoded first seperately for others to work on and view. It contains all the HTML pages for the login, mainpage, events and profile. 
+  NodeJS:
+  This folder is the meat of this program. It contains the views(HTML files for the pages.) Along with
 the front end and back end javascript. Along with the queries in the DAL folder inside NODEJS.
 This folder also holds the information for login. Mainly in the middleware. Then holds the server connection for each page through the routes folder. Then the SQL folder just holds example sql code. Lastly, sequelize folder connects
-the database.
+the database. (Run the program in this foulder).
 
 Directions: 
-1) Download pgAdmin this will be the database.Enter the password lucky2713 then look for the
+1) Download pgAdmin this will be the database.Enter the password then look for the
 database called der1qqcar9k6mv.
 
 2)Move to the NodeJS file once you havedownloaded the entire repository.Enter the command Node app.js
