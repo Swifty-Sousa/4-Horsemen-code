@@ -1,3 +1,10 @@
+This project was created in order to aid the event programs specifically through the Honors College at CU Boulder. 
+The current system used to log student information is inefficient and impractical. 
+Through this upgraded system, students are more easily tracked when they attend events.
+Additionally, students have access to their event history and are suggested future events based on recommendations created by the system.
+
+
+
 This repo is the source of all code for our project, the project hieirachy is as follows:
 
 Pie-1-Swiper:
