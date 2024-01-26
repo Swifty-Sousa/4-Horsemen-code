@@ -16,7 +16,7 @@ Of course the app.js runs the server.
 
 The html file in the repo is just the same as views. I uploaded it
 first incase anyone wanted to add to them  since
-i created them.
+I created them.
 
 Lastly, is the pie-swiper code. This is all Christans
 code for his card swiper and for it to function.
