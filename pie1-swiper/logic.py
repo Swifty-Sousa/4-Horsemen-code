@@ -3,6 +3,7 @@
 
 def parse_card(buffone_raw):
     #print("reached parse card")
+    #This is the code for the swiper to read the card
     buffone_holder= buffone_raw.split('=')
     buffone_holder[0]= buffone_holder[0][2:]
     card_name= buffone_holder[0]
