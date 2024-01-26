@@ -11,6 +11,15 @@ CREATE TABLE students{
   major character varying(10) NOT NULL
 };
 
+CREATE TABLE Teststudents{
+  ID smallint NOT NULL,
+  name character varying(15) NOT NULL,
+  email character varying(30) NOT NULL,
+  password character varying(15) NOT NULL,
+  studentId smallint NOT NULL,
+  major character varying(10) NOT NULL
+};
+
 CREATE TABLE events{
   ID smallint NOT NULL,
   discription character varying(300) NOT NULL,
